@@ -1,0 +1,11 @@
+apiVersion: v1
+name: techtrends
+description: Install the techtrends application
+keywords:
+- python
+- flask
+- techtrends 
+version: 1.0.0
+maintainers:
+- name: aplacidi 
+  email: aplacidi2186@gmail.com

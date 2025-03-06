@@ -13,17 +13,17 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx
+        app: techtrends
     spec:
       containers:
-      - image: techtrends:latest
+      - image: aplacidi/techtrends:latest
         imagePullPolicy: IfNotPresent
         name: techtrends
         resources:
-          limits:
+          requests:
             cpu: "250m"
             memory: "64Mi"
-          requests:
+          limits:
             cpu: "500m"
             memory: "128Mi"
         ports:
