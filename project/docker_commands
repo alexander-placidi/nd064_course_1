@@ -1,11 +1,37 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+docker build -t aplacidi:techtrends .
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+docker run --name techtrends -d -p 7111:3111 aplacidi:techtrends
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+docker logs techtrends
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+
+$ docker logs techtrends
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+2025-03-06 14:41:14,642 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment. from _log
+2025-03-06 14:41:14,642 - INFO -  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit) from _log
+2025-03-06 14:43:07,680 - DEBUG - Article >>>2020 CNCF Annual Report<<< with ID >>>1<<< retrieved. from post        
+2025-03-06 14:43:07,685 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:07] "GET /1 HTTP/1.1" 200 - from _log
+2025-03-06 14:43:07,700 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:07] "GET /static/css/main.css HTTP/1.1" 304 - from _log
+2025-03-06 14:43:12,572 - DEBUG - Article >>>KubeCon + CloudNativeCon 2021<<< with ID >>>2<<< retrieved. from post  
+2025-03-06 14:43:12,572 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:12] "GET /2 HTTP/1.1" 200 - from _log
+2025-03-06 14:43:12,587 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:12] "GET /static/css/main.css HTTP/1.1" 304 - from _log
+2025-03-06 14:43:14,551 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:14] "GET /create HTTP/1.1" 200 - from _log       
+2025-03-06 14:43:14,564 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:14] "GET /static/css/main.css HTTP/1.1" 304 - from _log
+2025-03-06 14:43:21,561 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:21] "POST /create HTTP/1.1" 302 - from _log      
+2025-03-06 14:43:24,048 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:24] "GET /7 HTTP/1.1" 200 - from _log
+2025-03-06 14:43:24,061 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:24] "GET /static/css/main.css HTTP/1.1" 304 - from _log
+2025-03-06 14:43:25,996 - DEBUG - Retrieved About Us page. from about
+2025-03-06 14:43:25,997 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:25] "GET /about HTTP/1.1" 200 - from _log
+2025-03-06 14:43:26,012 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:26] "GET /static/css/main.css HTTP/1.1" 304 - from _log
+2025-03-06 14:43:27,452 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:27] "GET / HTTP/1.1" 200 - from _log
+2025-03-06 14:43:27,467 - INFO - 172.17.0.1 - - [06/Mar/2025 14:43:27] "GET /static/css/main.css HTTP/1.1" 304 - from _log
+(.venv)
