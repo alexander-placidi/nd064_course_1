@@ -6,6 +6,6 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt && python init_db.py
 
-EXPOSE 6111
+EXPOSE 3111
 
 CMD [ "python", "app.py" ]

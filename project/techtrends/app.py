@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import sys
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
@@ -75,7 +76,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-        logging.debug(f"Article with ID >>>{post['id']}<<< not found.")
+        logging.error(f"Article with ID >>>{post_id}<<< not found.")
         return render_template('404.html'), 404
     else:
         logging.debug(f"Article >>>{post['title']}<<< with ID >>>{post['id']}<<< retrieved.")
@@ -98,6 +99,7 @@ def create():
             flash('Title is required!')
         else:
             create_post(title, content)
+            logging.debug(f"A new Article with title >>>{title}<<< has been created.")
 
             return redirect(url_for('index'))
 
@@ -141,11 +143,23 @@ def metrics():
     )
     return response     
 
+def config_logger():
+    FORMAT = '%(asctime)s - %(levelname)s - %(message)s from %(funcName)s'
+    
+    console_stdout_handler = logging.StreamHandler(sys.stdout)
+    console_stderr_handler = logging.StreamHandler(sys.stderr)
+    
+    console_stdout_handler.addFilter(lambda record: record.levelno <= logging.INFO)
+    console_stderr_handler.addFilter(lambda record: record.levelno > logging.INFO)
+
+    handlers =[console_stdout_handler, console_stderr_handler]
+    
+    logging.basicConfig(
+        level=logging.DEBUG, 
+        format=FORMAT,
+        handlers=handlers)
+
 # start the application on port 3111
 if __name__ == "__main__":
-   FORMAT = '%(asctime)s - %(levelname)s - %(message)s from %(funcName)s'
-   logging.basicConfig(
-       level=logging.DEBUG, 
-       encoding='utf-8',
-       format=FORMAT)
-   app.run(host='0.0.0.0', port='3111')
+    config_logger()
+    app.run(host='0.0.0.0', port='3111')
